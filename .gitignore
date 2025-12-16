@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Data files (too large for git - use Git LFS or document download)
+data/raw/*.xlsx
+data/raw/*.csv
+data/intermediate/*.csv
+data/pre-processed/*.csv
+
+# Model files (binary, can be large)
+models/*.pkl
+models/*.h5
+models/*.joblib
+*.pkl
+*.h5
+*.joblib
+
+# Results (generated output)
+results/**/*.csv
+results/**/*.txt
+results/**/*.png
+
+# Figures (generated output - consider keeping final figures)
+# figures/*.png  # Uncomment if you don't want figures in git
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# RDKit
+.rdkit_cache/

@@ -1,0 +1,49 @@
+name: trpv1_ml_benchmark
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python version
+  - python=3.10
+
+  # Data Processing
+  - pandas>=2.0.0
+  - numpy>=1.24.0
+
+  # Chemistry/Molecular Processing (conda-forge)
+  - rdkit>=2023.3.1
+
+  # Machine Learning
+  - scikit-learn>=1.3.0
+  - xgboost>=2.0.0
+  - lightgbm>=4.0.0
+
+  # Statistical Analysis
+  - statsmodels>=0.14.0
+  - scipy>=1.10.0
+
+  # Visualization
+  - matplotlib>=3.7.0
+  - seaborn>=0.12.0
+
+  # Install via pip (not available in conda or better via pip)
+  - pip
+  - pip:
+      - shap>=0.42.0
+      # - mordred  # Uncomment if you need molecular descriptors
+
+# INSTALLATION INSTRUCTIONS:
+# ==========================
+#
+# 1. Create the environment:
+#    conda env create -f environment.yml
+#
+# 2. Activate the environment:
+#    conda activate trpv1_ml_benchmark
+#
+# 3. Verify installation:
+#    python -c "import rdkit; import pandas; import sklearn; print('All dependencies installed!')"
+#
+# 4. Run preprocessing:
+#    cd code/preprocessing
+#    python run_preprocessing.py
