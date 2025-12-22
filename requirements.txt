@@ -26,36 +26,6 @@ shap>=0.42.0,<1.0.0
 # mordred>=1.2.0
 
 # Chemistry/Molecular Processing
-# NOTE: RDKit is best installed via conda (see INSTALLATION.md)
-# Uncomment ONLY if you cannot use conda:
-# rdkit-pypi>=2022.9.5
+rdkit>=2024.9.1
 
-# ============================================================================
-# INSTALLATION INSTRUCTIONS
-# ============================================================================
-#
-# RECOMMENDED METHOD (using conda for RDKit):
-# -------------------------------------------
-# 1. Create and activate conda environment:
-#    conda env create -f environment.yml
-#    conda activate trpv1_ml_benchmark
-#
-# 2. Verify installation:
-#    python check_dependencies.py
-#
-# ALTERNATIVE METHOD (pip only - may have RDKit issues):
-# -------------------------------------------------------
-# 1. Create virtual environment:
-#    python -m venv venv
-#    source venv/bin/activate  # On Windows: venv\Scripts\activate
-#
-# 2. Install RDKit via pip (not recommended):
-#    pip install rdkit-pypi
-#
-# 3. Install other dependencies:
-#    pip install -r requirements.txt
-#
-# 4. Verify installation:
-#    python check_dependencies.py
-#
-# For detailed instructions, see: INSTALLATION.md
+
