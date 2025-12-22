@@ -76,3 +76,4 @@ desktop.ini
 
 # RDKit
 .rdkit_cache/
+trpcheck_venv/

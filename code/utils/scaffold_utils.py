@@ -154,20 +154,19 @@ def scaffold_split(smiles_list, sizes=SPLIT_SIZES, seed=RANDOM_SEED, balanced=Tr
 # ============================================================================
 # Validation Utilities
 # ============================================================================
-
 def validate_split(train_df, test_df, label_col):
     """
     Validate train/test split.
 
     Checks:
-    1. Both splits have at least 2 classes
-    2. No index overlap
-    3. Reports class distribution
+    1. Both splits contain at least 2 classes
+    2. No molecule overlap between splits (by InChIKey)
+    3. Logs class distributions
 
     Args:
         train_df: Training DataFrame
         test_df: Test DataFrame
-        label_col: Column name containing class labels
+        label_col: Column name containing class labels (e.g., 'CLASS')
 
     Raises:
         ValueError: If validation fails
@@ -177,7 +176,6 @@ def validate_split(train_df, test_df, label_col):
     # Check class presence in each split
     for df, name in [(train_df, "train"), (test_df, "test")]:
         class_counts = Counter(df[label_col])
-
         logging.info(f"{name.capitalize()} class distribution: {dict(class_counts)}")
 
         if len(class_counts) < 2:
@@ -186,9 +184,16 @@ def validate_split(train_df, test_df, label_col):
                 f"Try a different random seed."
             )
 
-    # Check for index overlap (shouldn't happen, but good to verify)
-    overlap = set(train_df.index) & set(test_df.index)
-    if overlap:
-        raise ValueError(f"Train/test index overlap detected: {overlap}")
+    # Check for molecule overlap (data leakage check) using InChIKey
+    if "InChIKey" not in train_df.columns or "InChIKey" not in test_df.columns:
+        raise ValueError("InChIKey column missing. Run Step 1 standardization first.")
 
-    logging.info("Split validation passed: both splits have all classes")
+    train_ids = set(train_df["InChIKey"].dropna().astype(str))
+    test_ids = set(test_df["InChIKey"].dropna().astype(str))
+    overlap = train_ids & test_ids
+
+    if overlap:
+        raise ValueError(f"Train/test molecule overlap detected: {len(overlap)} shared InChIKeys")
+
+    logging.info("Split validation passed: both splits have all classes, no molecule overlap by InChIKey")
+

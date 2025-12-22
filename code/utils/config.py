@@ -74,16 +74,25 @@ COL_TAUT_NONISO = "TAUT_NONISO"
 # ============================================================================
 
 def get_raw_file(endpoint: str) -> Path:
-    """Get path to raw ChEMBL export file.
+    """Get path to the cleaned input dataset used as preprocessing entrypoint.
+
+    Note: In this repo layout, the "raw" ChEMBL exports are stored as XLSX under
+    data/raw/*_raw_data/, while the cleaned CSV inputs are stored under
+    data/intermediate/*_intermediate/. The preprocessing pipeline starts from
+    those cleaned CSVs.
 
     Args:
         endpoint: 'IC50' or 'EC50'
 
     Returns:
-        Path to raw CSV file
+        Path to cleaned input CSV file
     """
-    return DATA_RAW / f"TRPV1_chembl_{endpoint}_cleaned_v1.csv"
-
+    endpoint = endpoint.upper()
+    if endpoint not in {"IC50", "EC50"}:
+        raise ValueError(f"Unknown endpoint: {endpoint}")
+    cleaned_dir = DATA_INTERMEDIATE / f"{endpoint}_intermediate"
+    cleaned_dir.mkdir(parents=True, exist_ok=True)
+    return cleaned_dir / f"TRPV1_chembl_{endpoint}_cleaned_v1.csv"
 
 def get_standardized_file(endpoint: str) -> Path:
     """Get path to standardized (RDKit cleaned) file.
