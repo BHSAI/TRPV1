@@ -18,6 +18,9 @@ def check_imports():
         'Chemistry/Molecular Processing': {
             'rdkit': 'Molecular structure handling and fingerprints',
         },
+        'Molecular Descriptors': {
+            'mordred': 'Mordred molecular descriptor calculator',
+        },
         'Machine Learning': {
             'sklearn': 'Scikit-learn ML algorithms',
             'xgboost': 'XGBoost gradient boosting',
