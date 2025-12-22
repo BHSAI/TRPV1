@@ -35,8 +35,8 @@ This repository provides a comprehensive benchmark of machine learning models fo
 ### Installation
 
 ```bash
-git clone https://github.com/mabdulhameed/TRPV1_ML_benchmark.git
-cd TRPV1_ML_benchmark
+git clone https://github.com/BHSAI/TRPV1.git
+cd TRPV1
 
 conda env create -f environment.yml
 conda activate trpv1_ml_benchmark
