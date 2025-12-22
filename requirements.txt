@@ -21,9 +21,8 @@ seaborn>=0.12.0,<1.0.0
 # Model Interpretation
 shap>=0.42.0,<1.0.0
 
-# Molecular Descriptors (optional)
-# Uncomment if using Mordred descriptors:
-# mordred>=1.2.0
+# Molecular Descriptors
+mordredcommunity[full]
 
 # Chemistry/Molecular Processing
 rdkit>=2024.9.1
