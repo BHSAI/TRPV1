@@ -40,6 +40,7 @@ from code.utils.config import (
     COL_ID,
     COL_CANONICAL_SMILES,
     COL_CLASS,
+    COL_INCHIKEY,
     SPLIT_SIZES,
     RANDOM_SEED,
 )
@@ -84,11 +85,11 @@ def scaffold_splitting(endpoint):
 
     # Select and rename columns for splitting
     # Keep only: ID, SMILES (canonical), CLASS
-    df = df_in[[COL_ID, COL_CANONICAL_SMILES, COL_CLASS]].copy()
+    df = df_in[[COL_ID, COL_CANONICAL_SMILES, COL_CLASS, COL_INCHIKEY]].copy()
     df = df.rename(columns={COL_CANONICAL_SMILES: "SMILES"})
 
     # Validate required columns
-    required_cols = {COL_ID, "SMILES", COL_CLASS}
+    required_cols = {COL_ID, "SMILES", COL_CLASS, COL_INCHIKEY}
     if not required_cols.issubset(df.columns):
         missing = required_cols - set(df.columns)
         raise ValueError(f"Missing required columns: {missing}")

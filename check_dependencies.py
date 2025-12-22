@@ -11,32 +11,33 @@ import sys
 def check_imports():
     """Check if all required packages can be imported."""
     packages = {
-        'Core Data Processing': {
-            'pandas': 'Data manipulation and analysis',
-            'numpy': 'Numerical operations and arrays',
+        "Core Data Processing": {
+            "pandas": "Data manipulation and analysis",
+            "numpy": "Numerical operations and arrays",
         },
-        'Chemistry/Molecular Processing': {
-            'rdkit': 'Molecular structure handling and fingerprints',
+        "Chemistry/Molecular Processing": {
+            "rdkit": "Molecular structure handling and fingerprints",
         },
-        'Molecular Descriptors': {
-            'mordred': 'Mordred molecular descriptor calculator',
+        "Molecular Descriptors": {
+            # Provided by mordredcommunity[full], but imported as `mordred`
+            "mordred": "Mordred descriptors (provided by mordredcommunity)",
         },
-        'Machine Learning': {
-            'sklearn': 'Scikit-learn ML algorithms',
-            'xgboost': 'XGBoost gradient boosting',
-            'lightgbm': 'LightGBM gradient boosting',
+        "Machine Learning": {
+            "sklearn": "Scikit-learn ML algorithms",
+            "xgboost": "XGBoost gradient boosting",
+            "lightgbm": "LightGBM gradient boosting",
         },
-        'Statistical Analysis': {
-            'statsmodels': 'Statistical models and tests',
-            'scipy': 'Scientific computing',
+        "Statistical Analysis": {
+            "statsmodels": "Statistical models and tests",
+            "scipy": "Scientific computing",
         },
-        'Visualization': {
-            'matplotlib': 'Plotting and visualization',
-            'seaborn': 'Statistical data visualization',
+        "Visualization": {
+            "matplotlib": "Plotting and visualization",
+            "seaborn": "Statistical data visualization",
         },
-        'Model Interpretation': {
-            'shap': 'SHAP model explanations',
-        }
+        "Model Interpretation": {
+            "shap": "SHAP model explanations",
+        },
     }
 
     print("=" * 70)
@@ -78,16 +79,25 @@ def check_imports():
         print(f"\n❌ Missing packages: {', '.join(all_missing)}")
         print("\nTo install missing packages:")
         print("-" * 70)
-
+        
+        step = 1
+        
         if 'rdkit' in all_missing:
-            print("\n1. Install RDKit (required for molecular processing):")
+            print(f"\n{step}. Install RDKit (required for molecular processing):")
             print("   conda install -c conda-forge rdkit")
             print("   OR")
-            print("   pip install rdkit-pypi  # May not work on all systems")
+            print("   pip install rdkit")
             all_missing.remove('rdkit')
+            step += 1
 
+        if 'mordred' in all_missing:
+            print(f"\n{step}. Install Mordred descriptors (recommended):")
+            print('   pip install "mordredcommunity[full]"')
+            all_missing.remove('mordred')
+            step += 1
+            
         if all_missing:
-            print(f"\n2. Install remaining packages:")
+            print(f"\n{step}. Install remaining packages:")
             print(f"   pip install {' '.join(all_missing)}")
 
         print("\nOR install everything at once:")
