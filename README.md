@@ -86,7 +86,7 @@ For full script documentation, see:
 ## Repository Structure (High Level)
 
 ```
-TRPV1_ML_benchmark/
+TRPV1/
 ├── code/            # Preprocessing, analysis, utilities
 ├── data/            # Raw and processed datasets
 ├── results/         # Tables and evaluation outputs
