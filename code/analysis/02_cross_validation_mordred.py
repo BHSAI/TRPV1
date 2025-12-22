@@ -5,7 +5,7 @@
 Performs 5-fold cross-validation repeated 5 times for model comparison
 using Mordred molecular descriptors with feature cleaning and scaling.
 
-Requires: pip install mordred
+Requires: pip install "mordredcommunity[full]"
 
 Usage:
     python 02_cross_validation_mordred.py --endpoint IC50
@@ -80,7 +80,7 @@ def run_cross_validation(endpoint, mols, y):
 
     if not check_mordred_available():
         logging.error("Mordred package not installed!")
-        logging.error("Install with: pip install mordred")
+        logging.error("Install with: pip install mordredcommunity[full]")
         return None
 
     logging.info(f"Computing Mordred descriptors...")
