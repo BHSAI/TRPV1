@@ -19,7 +19,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from code.utils.config import get_results_dir, MODEL_ORDER
+from code.utils.config import get_results_dir, MODEL_ORDER, FINGERPRINT_TYPES
 
 logging.basicConfig(
     level=logging.INFO,
@@ -35,7 +35,7 @@ def generate_master_table(endpoint, fingerprint_types=None):
     logging.info(f"Generating master table for {endpoint}")
 
     if fingerprint_types is None:
-        fingerprint_types = ["RDKITfp", "Morgan", "MACCS"]
+        fingerprint_types = FINGERPRINT_TYPES
 
     all_results = []
 
@@ -126,9 +126,9 @@ Examples:
     parser.add_argument(
         "--fingerprints",
         nargs="+",
-        choices=["RDKITfp", "Morgan", "MACCS", "AtomPair"],
+        choices=["RDKITfp", "Morgan", "MACCS", "AtomPair", "Mordred"],
         default=None,
-        help="Fingerprint types to include (default: RDKITfp Morgan MACCS)"
+        help=f"Fingerprint types to include (default: {' '.join(FINGERPRINT_TYPES)})"
     )
 
     args = parser.parse_args()

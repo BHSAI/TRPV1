@@ -61,7 +61,10 @@ results/**/*.txt
 results/**/*.png
 
 # Figures (generated output - consider keeping final figures)
-# figures/*.png  # Uncomment if you don't want figures in git
+figures/*.png  # Uncomment if you don't want figures in git
+
+# Keep manuscript / curated figures tracked
+!figures/Figure*.png
 
 # OS
 .DS_Store

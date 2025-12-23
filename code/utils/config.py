@@ -164,7 +164,7 @@ N_FOLDS = 5
 BASE_RANDOM_STATE = 42
 
 # Fingerprint types for analysis
-FINGERPRINT_TYPES = ["RDKITfp", "MACCS", "Morgan", "AtomPair"]
+FINGERPRINT_TYPES = ["RDKITfp", "MACCS", "Morgan", "AtomPair", "Mordred"]
 
 # Model execution order for consistent reporting
 MODEL_ORDER = [
