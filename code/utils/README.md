@@ -68,7 +68,7 @@ Generate molecular fingerprints for machine learning.
 - **RDKit FP** (2048-bit)
 - **Morgan FP** (ECFP4, 2048-bit, radius=2)
 - **MACCS Keys** (166-bit)
-- **Atom Pair** (2048-bit)
+
 
 **Usage**:
 ```python
