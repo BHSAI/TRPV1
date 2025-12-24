@@ -126,7 +126,7 @@ Examples:
     parser.add_argument(
         "--fingerprints",
         nargs="+",
-        choices=["RDKITfp", "Morgan", "MACCS", "AtomPair", "Mordred"],
+        choices=["RDKITfp", "Morgan", "MACCS", "Mordred"],
         default=None,
         help=f"Fingerprint types to include (default: {' '.join(FINGERPRINT_TYPES)})"
     )

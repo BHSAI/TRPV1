@@ -164,7 +164,7 @@ N_FOLDS = 5
 BASE_RANDOM_STATE = 42
 
 # Fingerprint types for analysis
-FINGERPRINT_TYPES = ["RDKITfp", "MACCS", "Morgan", "AtomPair", "Mordred"]
+FINGERPRINT_TYPES = ["RDKITfp", "MACCS", "Morgan", "Mordred"]
 
 # Model execution order for consistent reporting
 MODEL_ORDER = [
@@ -181,7 +181,7 @@ def get_results_dir(endpoint: str, fingerprint_type: str = None) -> Path:
 
     Args:
         endpoint: 'IC50' or 'EC50'
-        fingerprint_type: Optional fingerprint type ('RDKITfp', 'Morgan', 'MACCS', 'AtomPair')
+        fingerprint_type: Optional fingerprint type ('RDKITfp', 'Morgan', 'MACCS', 'Mordred')
 
     Returns:
         Path to results directory

@@ -3,7 +3,7 @@
 5x5 Repeated Cross-Validation with Molecular Fingerprints
 
 Performs 5-fold cross-validation repeated 5 times for model comparison
-using molecular fingerprints (RDKit, Morgan, MACCS, AtomPair).
+using molecular fingerprints (RDKit, Morgan, MACCS).
 
 Usage:
     python 01_cross_validation_fingerprints.py --endpoint IC50
@@ -182,7 +182,7 @@ Examples:
     parser.add_argument(
         "--fingerprints",
         nargs="+",
-        choices=["RDKITfp", "Morgan", "MACCS", "AtomPair"],
+        choices=["RDKITfp", "Morgan", "MACCS"],
         default=None,
         help="Fingerprint types to use (default: RDKITfp Morgan MACCS)"
     )

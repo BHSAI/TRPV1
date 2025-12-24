@@ -177,7 +177,7 @@ Examples:
 
     parser.add_argument(
         "--fingerprint",
-        choices=["RDKITfp", "Morgan", "MACCS", "AtomPair"],
+        choices=["RDKITfp", "Morgan", "MACCS"],
         default=None,
         help="Specific fingerprint type (default: all)"
     )

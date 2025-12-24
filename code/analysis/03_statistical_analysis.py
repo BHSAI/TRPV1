@@ -70,7 +70,7 @@ def run_statistical_analysis(endpoint, fingerprint_type, metric):
             save_path=fig_file
         )
 
-        logging.info(f"  ANOVA p-value: {stats_results['anova'].anova_table['Pr > F'][0]:.4f}")
+        logging.info(f"  ANOVA p-value: {stats_results['anova'].anova_table['Pr > F'].iloc[0]:.4f}")
         logging.info(f"  Saved statistical results to: {output_dir}")
 
         return stats_results
@@ -126,7 +126,7 @@ Examples:
     parser.add_argument(
         "--fingerprints",
         nargs="+",
-        choices=["RDKITfp", "Morgan", "MACCS", "AtomPair", "Mordred"],
+        choices=["RDKITfp", "Morgan", "MACCS", "Mordred"],
         default=None,
         help="Fingerprint types to analyze (default: RDKITfp Morgan MACCS)"
     )

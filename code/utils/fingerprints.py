@@ -10,7 +10,7 @@ This module provides functions for generating various molecular fingerprints:
 
 import numpy as np
 from rdkit import Chem, DataStructs
-from rdkit.Chem import rdFingerprintGenerator, MACCSkeys, AtomPairs
+from rdkit.Chem import rdFingerprintGenerator, MACCSkeys
 from .config import MORGAN_RADIUS, MORGAN_FP_SIZE
 
 # ============================================================================
@@ -25,9 +25,6 @@ _morgan_gen = rdFingerprintGenerator.GetMorganGenerator(
     radius=MORGAN_RADIUS,
     fpSize=MORGAN_FP_SIZE
 )
-
-# Atom Pair fingerprint generator (2048-bit)
-_atompair_gen = rdFingerprintGenerator.GetAtomPairGenerator(fpSize=MORGAN_FP_SIZE)
 
 # ============================================================================
 # Fingerprint Generation Functions
@@ -91,23 +88,6 @@ def generate_maccs_fp(mol: Chem.Mol) -> np.ndarray:
     return arr
 
 
-def generate_atompair_fp(mol: Chem.Mol) -> np.ndarray:
-    """
-    Generate 2048-bit Atom Pair fingerprint from a molecule.
-
-    Args:
-        mol: RDKit Mol object
-
-    Returns:
-        numpy array of shape (2048,) with dtype int8
-    """
-    arr = np.zeros(MORGAN_FP_SIZE, dtype=np.int8)
-    if mol is not None:
-        fp = _atompair_gen.GetFingerprint(mol)
-        DataStructs.ConvertToNumpyArray(fp, arr)
-    return arr
-
-
 # ============================================================================
 # Fingerprint Registry
 # ============================================================================
@@ -117,7 +97,6 @@ FINGERPRINT_GENERATORS = {
     "RDKITfp": generate_rdkit_fp,
     "Morgan": generate_morgan_fp,
     "MACCS": generate_maccs_fp,
-    "AtomPair": generate_atompair_fp,
 }
 
 
@@ -127,7 +106,7 @@ def get_fingerprint_generator(fingerprint_type: str):
 
     Args:
         fingerprint_type: Name of fingerprint type
-            ('RDKITfp', 'Morgan', 'MACCS', 'AtomPair')
+            ('RDKITfp', 'Morgan', 'MACCS')
 
     Returns:
         Fingerprint generator function
@@ -150,7 +129,7 @@ def generate_fingerprints(mols: list, fingerprint_type: str) -> np.ndarray:
     Args:
         mols: List of RDKit Mol objects
         fingerprint_type: Type of fingerprint to generate
-            ('RDKITfp', 'Morgan', 'MACCS', 'AtomPair')
+            ('RDKITfp', 'Morgan', 'MACCS')
 
     Returns:
         numpy array of shape (n_molecules, fingerprint_size)

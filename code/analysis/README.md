@@ -50,7 +50,7 @@ python 06_visualize_dashboard.py --endpoint IC50
 
 #### `01_cross_validation_fingerprints.py`
 - **Purpose**: 5×5 repeated stratified cross-validation with molecular fingerprints
-- **Fingerprints**: RDKITfp, Morgan, MACCS, AtomPair (default: first 3)
+- **Fingerprints**: RDKITfp, Morgan, MACCS
 - **Models**: KNN, SVM, Bayesian, LogisticRegression, RandomForest, XGBoost, LightGBM
 - **Output**: `{endpoint}_{fingerprint}_per_fold_metrics_5x5.csv`
 
