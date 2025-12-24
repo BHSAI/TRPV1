@@ -88,7 +88,6 @@ fp = generate_morgan_fp(mol)  # Returns numpy array (2048,)
 - `generate_rdkit_fp(mol)` - RDKit fingerprint
 - `generate_morgan_fp(mol)` - Morgan fingerprint
 - `generate_maccs_fp(mol)` - MACCS keys
-- `generate_atompair_fp(mol)` - Atom Pair fingerprint
 - `generate_fingerprints(mols, fp_type)` - Batch generation
 - `smiles_to_mols(smiles_list)` - Convert SMILES to Mol objects
 
